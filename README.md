@@ -1,2 +1,2 @@
 # IQS_Database
-My beginings in Django.
+My beginnings in Django.
