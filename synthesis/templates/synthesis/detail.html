@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GQF Database</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+<nav>
+    <div class="container nav-wrapper">
+        <a href="/" class="brand-logo">GQF Database</a>
+        <ul id="nav-mobile" class="right">
+            <li><a href="/">Home</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right">
+            <li><a href="/synthesis/">Back</a></li>
+        </ul>
+    </div>
+
+</nav>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+       
+    #MI6 {
+      margin: auto;
+      border-collapse: collapse;
+      width: 98%;
+      border: 1px solid #ddd;
+      font-size: 18px;
+    }
+    
+    #MI6 th, #MI6 td {
+      text-align: left;
+      padding: 12px;
+    }
+    
+    #MI6 tr {
+      border-bottom: 1px solid #ddd;
+    }
+    
+    #MI6 tr.header, #MI6 tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+    </style>
+
+{% load static %}
+
+<h1 style="text-align:center">{{ struct.code }}</h1>
+<img src="{% static "" %}synthesis/images/{{ struct.code }}.png" class="center">
+<p style="text-align:center">{{ struct.smiles }}</p>
+
+
+<table id="MI6">
+
+    <tr>
+        <th>Author</th>
+        <th>Project</th>
+    </tr>
+
+    <tr>
+        <td data-input="author">{{ struct.author_name }}</td>
+        <td data-input="project">{{ struct.project_name }}</td>
+    </tr>
+
+
+    </table>
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>     

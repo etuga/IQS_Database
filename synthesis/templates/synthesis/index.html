@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GQF Database</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+<nav>
+    <div class="container nav-wrapper">
+        <a href="/" class="brand-logo">GQF Database</a>
+        <ul id="nav-mobile" class="right">
+            <li><a href="/">Home</a></li>
+        </ul>
+    </div>
+</nav>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#code {
+  margin: auto;
+  width: 25%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#author {
+    margin: auto;
+  width: 25%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#project {
+  margin: auto;
+  width: 25%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#MI6 {
+  margin: auto;
+  border-collapse: collapse;
+  width: 98%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#MI6 th, #MI6 td {
+  text-align: left;
+  padding: 12px;
+}
+
+#MI6 tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#MI6 tr.header, #MI6 tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
+
+<input type="text" id="code" class="search-key" placeholder="Code">
+<input type="text" id="author" class="search-key" placeholder="Author">
+<input id="project" class='search-key' placeholder='Project'></input>
+<select id="project" class='search-key'>
+	<option></option>
+	<option>PanTCK</option>
+	<option>ZAP</option>
+</select>
+        <p></p>
+        <table id="MI6">
+
+        <tr>
+            <th>Code</th>
+            <th>Author</th>
+            <th>Project</th>
+        </tr>
+        {% if structure_list %}
+        <ul>
+        {% for structure in structure_list %}
+            <tr>
+                <td data-input="code"><a href="/synthesis/{{ structure.id }}/">{{ structure.code }}</a></td>
+                <td data-input="author">{{ structure.author_name }}</td>
+                <td data-input="project">{{ structure.project_name }}</td>
+            </tr>
+        {% endfor %}
+        </ul>
+        {% else %}
+            <p>No structures are available.</p>
+        {% endif %}
+
+        </table>
+        
+<script>       
+var $filterableRows = $('#MI6').find('tr').not(':first'),
+		$inputs = $('.search-key');
+
+$inputs.on('input', function() {
+
+	$filterableRows.hide().filter(function() {
+  	return $(this).find('td').filter(function() {
+    	
+      var tdText = $(this).text().toLowerCase(),
+      		inputValue = $('#' + $(this).data('input')).val().toLowerCase();
+    
+    	return tdText.indexOf(inputValue) != -1;
+    
+    }).length == $(this).find('td').length;
+  }).show();
+
+});
+</script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>     
+
