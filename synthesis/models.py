@@ -1,6 +1,6 @@
 from django.db import models
 
-AUTHOR=[('Endika', 'Endika'),('Rai','Rai')]
+AUTHOR=[('Endika', 'Endika'),('Rai','Rai'),('Victor','Victor')]
 PROJECT=[('PanTCK','PanTCK'), ('ZAP','ZAP')]
 
 class structure(models.Model):
